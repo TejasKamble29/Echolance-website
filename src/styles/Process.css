@@ -1,0 +1,290 @@
+.process-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.process-header {
+  max-width: 1200px;
+  margin-bottom: 5rem;
+}
+
+.process-header-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+.process-header-row h2 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+.process-header-row p {
+  color: var(--color-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.process-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(245, 245, 240, 0.08);
+}
+
+.process-line-progress {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-violet), var(--color-cyan));
+  border-radius: 2px;
+}
+
+.process-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: start;
+  min-height: 220px;
+}
+
+.process-step-node {
+  grid-column: 2 / 3;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.process-step-node-inner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-charcoal);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.process-step:hover .process-step-node-inner {
+  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  color: var(--color-black);
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 16px 40px -12px rgba(139, 92, 246, 0.6);
+}
+
+.process-step-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  opacity: 0;
+  z-index: 1;
+  animation: processPulse 3s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.process-step:nth-child(2) .process-step-pulse { --delay: 0s; }
+.process-step:nth-child(3) .process-step-pulse { --delay: 0.6s; }
+.process-step:nth-child(4) .process-step-pulse { --delay: 1.2s; }
+.process-step:nth-child(5) .process-step-pulse { --delay: 1.8s; }
+.process-step:nth-child(6) .process-step-pulse { --delay: 2.4s; }
+
+@keyframes processPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.6); opacity: 0.25; }
+}
+
+.process-step.is-left .process-step-card {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: end;
+  margin-right: 2.5rem;
+}
+
+.process-step.is-right .process-step-card {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: start;
+  margin-left: 2.5rem;
+}
+
+.process-step-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 32px 64px -28px rgba(0, 0, 0, 0.6);
+}
+
+.process-step-card-bg {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.process-step.is-right .process-step-card-bg {
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 70%);
+}
+
+.process-step-card:hover .process-step-card-bg {
+  opacity: 1;
+}
+
+.process-step-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.process-step-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.process-step-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(34, 211, 238, 0.1));
+  color: var(--color-white);
+}
+
+.process-step-head h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.process-step-desc {
+  color: var(--color-gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.process-step-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(245, 245, 240, 0.06);
+}
+
+.process-step-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+.process-step-details li svg {
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+.process-final-node {
+  position: relative;
+  z-index: 3;
+  width: 64px;
+  height: 64px;
+  margin: 1rem auto 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 48px -12px rgba(139, 92, 246, 0.55);
+}
+
+@media (max-width: 900px) {
+  .process-header-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .process-timeline {
+    padding: 0;
+  }
+  .process-line {
+    left: 28px;
+    transform: none;
+  }
+  .process-step {
+    grid-template-columns: 56px 1fr;
+    min-height: 0;
+    margin-bottom: 2rem;
+  }
+  .process-step-node {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-content: flex-start;
+  }
+  .process-step.is-left .process-step-card,
+  .process-step.is-right .process-step-card {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: start;
+    margin: 0 0 0 1.5rem;
+    max-width: none;
+  }
+  .process-final-node {
+    margin: 0 0 0 0;
+    position: relative;
+    left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .process-step-card {
+    padding: 1.5rem;
+  }
+  .process-step-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+}

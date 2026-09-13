@@ -1,0 +1,218 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 9, 11, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: calc(100vh - 3rem);
+  background: var(--color-charcoal);
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  border-radius: 24px;
+  overflow-y: auto;
+  box-shadow: 0 64px 128px -48px rgba(0, 0, 0, 0.8);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(245, 245, 240, 0.04);
+  border: 1px solid rgba(245, 245, 240, 0.06);
+  color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: rotate(90deg);
+}
+
+.service-modal {
+  padding: 2.5rem;
+}
+
+.service-modal-header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-right: 3.5rem;
+  position: relative;
+}
+
+.service-modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.4), transparent);
+}
+
+.service-modal-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 211, 238, 0.1));
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-modal-icon-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%);
+  filter: blur(12px);
+}
+
+.service-modal-icon svg {
+  position: relative;
+  z-index: 1;
+}
+
+.service-modal-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.service-modal-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-violet);
+}
+
+.service-modal-titles h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0;
+}
+
+.service-modal-short {
+  color: var(--color-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.service-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.service-modal-desc h4,
+.service-modal-features h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  margin-bottom: 0.875rem;
+}
+
+.service-modal-desc p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+.service-modal-features ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.service-modal-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(245, 245, 240, 0.03);
+  border: 1px solid rgba(245, 245, 240, 0.05);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: var(--color-white);
+}
+
+.feature-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(34, 211, 238, 0.15));
+  color: var(--color-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(245, 245, 240, 0.06);
+}
+
+@media (max-width: 640px) {
+  .service-modal {
+    padding: 1.75rem 1.5rem;
+  }
+  .service-modal-header {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-right: 0;
+  }
+  .service-modal-features ul {
+    grid-template-columns: 1fr;
+  }
+  .service-modal-footer {
+    flex-direction: column-reverse;
+  }
+  .service-modal-footer .btn {
+    width: 100%;
+  }
+}

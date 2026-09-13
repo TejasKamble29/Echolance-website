@@ -1,0 +1,226 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.25rem 0;
+  background: transparent;
+  backdrop-filter: blur(0px);
+}
+
+.navbar-scrolled {
+  padding: 0.75rem 0;
+  background: rgba(8, 9, 11, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(245, 245, 240, 0.06);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  color: var(--color-white);
+  background: rgba(245, 245, 240, 0.04);
+}
+
+.nav-link-active {
+  color: var(--color-white);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-violet), var(--color-cyan));
+  border-radius: 2px;
+}
+
+.nav-link-num {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--color-violet);
+  opacity: 0.7;
+}
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  color: var(--color-black);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.navbar-cta:hover {
+  box-shadow: 0 12px 32px -12px rgba(139, 92, 246, 0.6);
+  transform: translateY(-1px);
+}
+
+.navbar-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  color: var(--color-white);
+  background: rgba(245, 245, 240, 0.05);
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  transition: all 0.3s ease;
+  z-index: 1100;
+}
+
+.navbar-burger:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #08090B;
+}
+
+.mobile-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(139, 92, 246, 0.2), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(34, 211, 238, 0.1), transparent 50%);
+  pointer-events: none;
+}
+
+.mobile-menu-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 3rem;
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(245, 245, 240, 0.06);
+  transition: all 0.3s ease;
+}
+
+.mobile-link:active {
+  transform: scale(0.98);
+}
+
+.mobile-link-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-violet);
+  width: 40px;
+}
+
+.mobile-link-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  color: var(--color-black);
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 0 1.25rem;
+  }
+
+  .navbar-links,
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-link-text {
+    font-size: 1.5rem;
+  }
+}
